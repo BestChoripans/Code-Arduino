@@ -1,7 +1,7 @@
 // Librerias y Variable.h
 #include <QTRSensors.h>
-#include "variable.h"
 #include <BluetoothSerial.h>
+#include "variable.h"
 
 /* Bluetooth */
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -16,6 +16,8 @@ QTRSensors QTR;
 /* -- Variabless -- */
 int umbral = 3000;
 int posicion;
+int racismo;
+int estado = 0;
 
 /* --- Variables Sensores --- */
 const uint8_t SensorNum = 8;
@@ -26,14 +28,14 @@ const int freq = 5000;
 const int resolution = 8;
 
 void setup() {
-  SerialBT.begin("Balatro Dinamico2");
   motorSetup();
+  SerialBT.begin("Balatro Dinamico2");
   // Serial.begin(9600);
   /* QTR Setup */
   QTR.setTypeAnalog();
   QTR.setSensorPins((const uint8_t[]){36, 39, 34, 35, 32, 33, 25, 26}, SensorNum);
   QTR.setEmitterPin(27);
-  /* QRE CALIBRAR */
+  /* QTR CALIBRAR */
   pinMode(LED, OUTPUT);
   pinMode(BOTON, INPUT);
   digitalWrite(LED, HIGH);
