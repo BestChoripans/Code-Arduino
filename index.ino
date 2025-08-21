@@ -16,8 +16,6 @@ QTRSensors QTR;
 /* -- Variabless -- */
 int umbral = 3000;
 int posicion;
-int racismo;
-int estado = 0;
 
 /* --- Variables Sensores --- */
 const uint8_t SensorNum = 8;
@@ -29,7 +27,7 @@ const int resolution = 8;
 
 void setup() {
   motorSetup();
-  SerialBT.begin("Balatro Dinamico2");
+  SerialBT.begin("Balatro Dinamico");
   // Serial.begin(9600);
   /* QTR Setup */
   QTR.setTypeAnalog();
