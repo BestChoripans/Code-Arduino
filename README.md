@@ -6,7 +6,7 @@ I probably will not update this so frequently idk
 
 This code can do multiple things some of them are:
 
-* Line Follow using Position
+* Line Follow using Position and PID
 * Position reading using a QTRSensor
 * Test the Servos
 * Test the reading values from the QTRSensor
