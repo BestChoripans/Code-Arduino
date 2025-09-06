@@ -25,6 +25,15 @@ uint16_t sensorValues[SensorNum];
 const int freq = 5000;
 const int resolution = 8;
 
+/* --- PID Variables --- */
+const float kp = 0.15;
+const int tp = 20;
+
+int error;
+int izq;
+int der;
+int giro;
+
 void setup() {
   motorSetup();
   SerialBT.begin("Balatro Dinamico");
