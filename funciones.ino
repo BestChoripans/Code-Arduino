@@ -92,25 +92,30 @@ void DynamicPosition(){ // arregla la variable para q lea posiciones xd
   
   SerialBT.println(posicion);
   delay(250);
+  error = posicion;
 }
 
 
 
 void PositionFollow(){ // el seguidor de linea usando posiciones
+  giro = kp * error;
+  delay(10);
+  izq = tp + giro;
+  der = tp - giro;
   if(posicion>-40 && posicion<20){
-    motores(-30, -30);
+    motores(izq, der);
     SerialBT.println("<- Avanzando ->");
   } else if(posicion>20 && posicion<245){
-    motores(-3, -33);
+    motores(izq, der);
     SerialBT.println("<- Derecha ->");
   } else if(posicion>-145 && posicion<-40){
-    motores(-33, -3);
+    motores(izq, der);
     SerialBT.println("<- Izquierda ->");
   } else if(posicion==-255 && posicion<-245){
-    motores(-45, -3);
+    motores(izq, der);
     SerialBT.println("Izq Potente");
   } else if(posicion>245){
-    motores(-3, -45);
+    motores(izq, der);
     SerialBT.println("Der Potente");
   }
   
