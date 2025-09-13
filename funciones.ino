@@ -120,18 +120,3 @@ void PositionFollow(){ // el seguidor de linea usando posiciones
   }
   
 }
-
-void error(){ // funcion para avisar de un error de manera visual (No esta integrada)
-  delay(300);
-  digitalWrite(LED, HIGH);
-  delay(300);
-  digitalWrite(LED, LOW);
-  delay(300);
-  digitalWrite(LED, HIGH);
-  delay(300);
-  digitalWrite(LED, LOW);
-  delay(300);
-  digitalWrite(LED, HIGH);
-  delay(300);
-  digitalWrite(LED, LOW);
-}
