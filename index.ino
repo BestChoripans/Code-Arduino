@@ -1,14 +1,21 @@
 // Librerias y Variable.h
 #include <QTRSensors.h>
-#include <BluetoothSerial.h>
 #include "variable.h"
 
-/* Bluetooth */
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Fallo de Bluetooth
+// -- Activar/Desactivar BLUETOOTH (PARA ENTORNO DE COMPETENCIA) -- //
+#define USE_BLUETOOTH  // Comentar esta linea para usar el Serial via USB antes que el bluetooth
+
+#ifdef USE_BLUETOOTH
+  #include <BluetoothSerial.h>
+  BluetoothSerial SerialBT;
+  // No se si funciona luego probare que tal anda XD
+  #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+  #error Fallo de Bluetooth
+  #endif
+#else
+  #define SerialBT Serial
 #endif
 
-BluetoothSerial SerialBT;
 
 /* Variable QTR */
 QTRSensors QTR;
@@ -37,7 +44,7 @@ int giro;
 void setup() {
   motorSetup();
   SerialBT.begin("Balatro Dinamico");
-  // Serial.begin(9600);
+  Serial.begin(9600);
   /* QTR Setup */
   QTR.setTypeAnalog();
   QTR.setSensorPins((const uint8_t[]){36, 39, 34, 35, 32, 33, 25, 26}, SensorNum);
